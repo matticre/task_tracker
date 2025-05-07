@@ -3,16 +3,28 @@
 #include <map>
 #include <string>
 
-int main(){
-    std::remove("prova.json");
+int main(int argc, char *argv[]){
     Json json;
-    json.Create("prova.json");
+    // json.Read("prova_3.json");
+    // std::string command = std::string(argv[1]);
 
-    std::map<std::string,std::string> map = {
-                                             {"task_id","1"},
-                                             {"task","element"},
-                                            };
-    // json.Insert(map);
-    // json.Insert(map);
-    // json.Insert(map);
+    // if (command == "add"){
+    //     std::string task = std::string(argv[2]);
+    //     json.Insert(task);
+    // }
+
+
+    // std::remove("prova.json");
+    
+// 
+    std::string task = "element";
+    // 
+    json.Add(task);
+    json.Add(task);
+    json.Add(task);
+    json.Write("prova_3.json");
+
+    // json.Read("prova_3.json");
+    // json.Print();
+
 }

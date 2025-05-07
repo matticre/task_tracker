@@ -4,6 +4,10 @@ cmake_minimum_required(VERSION 3.10)
 # Define the project name
 project(MyJsonProject CXX)
 
+#include directories
+include_directories(include)
+
+
 # Add the json_lib subdirectory
 # This will process the CMakeLists.txt file inside json_lib
 add_subdirectory(json_lib)

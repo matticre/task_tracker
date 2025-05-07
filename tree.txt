@@ -1,0 +1,13 @@
+.
+├── CMakeLists.txt
+├── include
+│   └── string_management.h
+├── json_lib
+│   ├── CMakeLists.txt
+│   ├── json_lib.cpp
+│   └── json_lib.h
+├── main.cpp
+├── README.md
+└── tree.txt
+
+3 directories, 8 files
