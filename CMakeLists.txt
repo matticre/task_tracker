@@ -1,7 +1,41 @@
-cmake_minimum_required(VERSION 3.10) 
+cmake_minimum_required(VERSION 3.10)
+project(TaskTracker VERSION 1.0.0 LANGUAGES CXX)
 
-project(TaskTracker)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
-add_executable(TaskTracker src/main.cpp)
+# Specify the C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_subdirectory(src)
+# Find required packages
+# Uncomment if needed:
+# find_package(nlohmann_json REQUIRED)
+
+# Source files
+set(SOURCES
+    src/main.cpp
+    src/TaskManager.cpp
+)
+
+# Header files
+set(HEADERS
+    include/TaskManager.h
+)
+
+# Create executable
+add_executable(TaskTracker ${SOURCES} ${HEADERS})
+
+# Include directories
+target_include_directories(TaskTracker PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+# Link libraries (uncomment if needed)
+# target_link_libraries(TaskTracker PRIVATE nlohmann_json::nlohmann_json)
+
+# Install rules
+install(TARGETS TaskTracker
+    RUNTIME DESTINATION bin
+)
