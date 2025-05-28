@@ -1,6 +1,9 @@
+#pragma once
+
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
 
 #include "TaskStructure.h"
 
@@ -8,13 +11,16 @@ class TaskManager {
     
     public:
         TaskManager();
-        void Open();
-        void Close();
-        void Add();
-        void Update();
-        void Delete();
-        void List(); // ALL, DONE, NOT DONE, PROGRESS
-        void Mark();
+        void Open(); //FATTO
+        void Close();  
+        void Add(const TaskStructure &task); 
+        void Update(const std::string& task_id, 
+                    const std::string& new_description);
+        void Delete(const std::string &str_id);
+        void List(const std::string& selection = "all"); // ALL, DONE, TODO, PROGRESS
+        void Mark(const std::string& task_id,
+                  const std::string& status);
+        void Write();
     
     private:
         std::vector<TaskStructure> task_list = {};
