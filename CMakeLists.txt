@@ -22,6 +22,7 @@ set(SOURCES
 # Header files
 set(HEADERS
     include/TaskManager.h
+    include/TaskStructure.h
 )
 
 # Create executable
@@ -32,10 +33,9 @@ target_include_directories(TaskTracker PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-# Link libraries (uncomment if needed)
-# target_link_libraries(TaskTracker PRIVATE nlohmann_json::nlohmann_json)
-
 # Install rules
 install(TARGETS TaskTracker
     RUNTIME DESTINATION bin
 )
+
+include(CPack)

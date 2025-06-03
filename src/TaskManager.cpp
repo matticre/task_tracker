@@ -12,7 +12,7 @@ void TaskManager::Open(){
     std::string filePath = execPath.string() + "/tasks.json";
 
     
-    std::ifstream file("tasks.json");
+    std::ifstream file("tasks-belin.json");
     std::string temp_string;
 
     while (file >> temp_string){
@@ -25,6 +25,8 @@ void TaskManager::Open(){
     }
 
     file.close();
+    m_id = task_list.size();
+    Write();
 }
 
 void TaskManager::List(const std::string& selection){
@@ -51,6 +53,14 @@ void TaskManager::List(const std::string& selection){
 
 void TaskManager::Add(const TaskStructure &task){
     task_list.push_back(task);
+    Write();
+}
+
+void TaskManager::Add(const std::string &task_description){
+    int task_id = m_id + 1;
+    TaskStructure new_task(task_id, task_description);
+    task_list.push_back(new_task);
+    Write();
 }
 
 void TaskManager::Update(const std::string& task_id, 
@@ -70,6 +80,8 @@ void TaskManager::Update(const std::string& task_id,
         task_list[idx_to_up].description = new_description;
     else
         std::cerr << "Task not found!\n";
+
+    Write();
 }
 
 void TaskManager::Delete(const std::string &task_id){
@@ -88,15 +100,16 @@ void TaskManager::Delete(const std::string &task_id){
         task_list.erase(task_list.begin() + idx_to_del);
     else
         std::cerr << "Task not found!\n";
+
+    Write();
 }
 
 void TaskManager::Mark(const std::string& task_id,
                        const std::string& status){
     
+
     bool check = status == "done";
-    check && (status == "todo");
-    check && (status == "in-progress");
-    
+    check = check || (status == "in-progress");
     if (!check){
         std::cerr << "Status not allowed! \n";
         return;
@@ -115,5 +128,25 @@ void TaskManager::Mark(const std::string& task_id,
 
     if (to_up)
         task_list[idx_to_up].status = status;
+    
+    Write();
+
+}
+
+void TaskManager::Write(){
+    std::ofstream file("tasks.json");
+    file << "[ \n";
+    
+    for (const auto & item : task_list){
+        file << "    {\n"
+             << "        \"id\": " << "\"" << item.id << "\",\n"
+             << "        \"description\": " << "\"" << item.description << "\",\n"
+             << "        \"status\": " << "\"" << item.status << "\",\n"
+             << "        \"createdAt\": " << "\"" << item.createdAt << "\",\n"
+             << "        \"updatedAt\": " << "\"" << item.updatedAt << "\"\n"     
+             << "    },\n";
+    }
+    
+    file << "] \n";
 
 }

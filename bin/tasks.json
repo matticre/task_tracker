@@ -1,24 +1,23 @@
-[
+[ 
     {
-      "id": "task-001",
-      "description": "Complete project proposal for Q3",
-      "status": "in-progress",
-      "createdAt": "2024-05-27T10:00:00Z",
-      "updatedAt": "2024-05-27T15:30:00Z"
+        "id": "1",
+        "description": "Complete project proposal for Q3",
+        "status": "in-progress",
+        "createdAt": "2024-05-27T10:00:00Z",
+        "updatedAt": "2024-05-27T15:30:00Z"
     },
     {
-      "id": "task-002",
-      "description": "Review team's weekly reports",
-      "status": "todo",
-      "createdAt": "2024-05-26T09:00:00Z",
-      "updatedAt": "2024-05-26T09:00:00Z"
+        "id": "2",
+        "description": "Review team's weekly reports",
+        "status": "in-progress",
+        "createdAt": "2024-05-26T09:00:00Z",
+        "updatedAt": "2024-05-26T09:00:00Z"
     },
     {
-      "id": "task-003",
-      "description": "Schedule client meeting for next week",
-      "status": "done",
-      "createdAt": "2024-05-25T14:00:00Z",
-      "updatedAt": "2024-05-25T16:45:00Z"
-    }
-  ]
-  
+        "id": "3",
+        "description": "Schedule client meeting for next week",
+        "status": "done",
+        "createdAt": "2024-05-25T14:00:00Z",
+        "updatedAt": "2024-05-25T16:45:00Z"
+    },
+] 

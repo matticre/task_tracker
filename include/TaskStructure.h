@@ -2,7 +2,11 @@
 
 #include <string>
 #include <fstream>
+#include <sstream>
 #include <algorithm>
+#include <chrono>
+#include <iomanip>
+#include <ctime> 
 
 struct TaskStructure {
       std::string id;
@@ -11,6 +15,23 @@ struct TaskStructure {
       std::string createdAt;
       std::string updatedAt;
 
+      TaskStructure(){};
+      TaskStructure(const int &task_id, const std::string task_description) : 
+            id(std::string(std::to_string(task_id))), 
+            description(task_description),
+            status("todo")
+            {     
+                  auto now   = std::chrono::system_clock::now();
+                  auto now_t = std::chrono::system_clock::to_time_t(now);
+                  auto *time = std::localtime(&now_t);
+                  auto date = std::put_time(time, "%Y-%m-%d %H:%M:%S");
+                  std::ostringstream oss;
+                  oss << date;
+
+                  createdAt = oss.str();
+                  updatedAt = createdAt;
+            };
+            
       void StoreStructure(std::ifstream &file){
             std::string line;
 

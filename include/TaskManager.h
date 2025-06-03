@@ -13,7 +13,10 @@ class TaskManager {
         TaskManager();
         void Open(); //FATTO
         void Close();  
-        void Add(const TaskStructure &task); 
+
+        void Add(const TaskStructure &task);
+        void Add(const std::string &task);
+
         void Update(const std::string& task_id, 
                     const std::string& new_description);
         void Delete(const std::string &str_id);
@@ -23,6 +26,7 @@ class TaskManager {
         void Write();
     
     private:
+        int m_id = 0;
         std::vector<TaskStructure> task_list = {};
 
 };
